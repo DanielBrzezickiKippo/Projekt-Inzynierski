@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
+public enum BlockType
+{
+    variable,
+    function,
+    forLoop,
+    whileLoop,
+    doWhileLoop,
+    ifStatement,
+    elseIfStatement,
+    elseStatement
+}
+
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler,IBeginDragHandler,IEndDragHandler
 {
+    public BlockType blockType;
     public GameObject parentBlock;
     [SerializeField] private Canvas _canvas;
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Interpreter : MonoBehaviour
 {
@@ -18,17 +20,30 @@ public class Interpreter : MonoBehaviour
     }
 
 
-    bool possibleToCompile(string code)
+    bool possibleToCompile(List<GameObject> blocks)
     {
+        int num = 1;   
+        for(int i =0;i<blocks.Count;i++)
+        {
+            Debug.Log(num + ". " + blocks[i].GetComponentInChildren<TextMeshProUGUI>().text);
+            num++;
+            if (blocks[i].GetComponent<BlockSlots>() != null)
+                possibleToCompile(blocks[i].GetComponent<BlockSlots>().blocks);
+            
+        }
         return false;
     }
 
-    void interprete(string code)
+    public void interprete()
     {
-        if (possibleToCompile(code))
+        if (possibleToCompile(GetComponent<BlockSlots>().blocks))
         {
 
         }
+        /*if (possibleToCompile(code))
+        {
+
+        }*/
     }
 
 

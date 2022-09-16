@@ -9,17 +9,44 @@ public class BlockSlots : MonoBehaviour, IDropHandler
     [SerializeField] public List<GameObject> blocks;
     [SerializeField] private float _height;
 
+
+
+    bool CanBeDropped(DragDrop dropped)
+    {
+        DragDrop previousDrop=null;
+        if (blocks.Count > 0)
+            previousDrop = blocks[blocks.Count - 1].GetComponent<DragDrop>();
+        switch (dropped.blockType)
+        {
+            case BlockType.elseIfStatement:
+                if (previousDrop == null || previousDrop.blockType != BlockType.ifStatement || previousDrop.blockType != BlockType.elseIfStatement)
+                    return false;
+                break;
+            case BlockType.elseStatement:
+                if (previousDrop == null||previousDrop.blockType != BlockType.ifStatement)
+                    return false;
+
+                break;
+        }
+        return true;
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData != null)
         {
-            eventData.pointerDrag.GetComponent<DragDrop>().parentBlock = gameObject;
-            eventData.pointerDrag.gameObject.transform.parent = gameObject.transform;
-            blocks.Add(eventData.pointerDrag.gameObject);
+            DragDrop dropped = eventData.pointerDrag.GetComponent<DragDrop>();
 
-            //eventData.pointerDrag.GetComponent<RectTransform>().localPosition = NextBlockPos();
-            SetBlockPositions();
-            //Debug.Log(eventData.pointerDrag.GetComponent<RectTransform>().localPosition);
+
+            if (CanBeDropped(dropped))
+            {
+                dropped.parentBlock = gameObject;
+                dropped.gameObject.transform.parent = gameObject.transform;
+                blocks.Add(dropped.gameObject);
+
+                //eventData.pointerDrag.GetComponent<RectTransform>().localPosition = NextBlockPos();
+                SetBlockPositions();
+                //Debug.Log(eventData.pointerDrag.GetComponent<RectTransform>().localPosition);
+            }
         }
     }
 
