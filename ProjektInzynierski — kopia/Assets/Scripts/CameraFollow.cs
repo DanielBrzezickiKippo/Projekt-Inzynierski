@@ -18,7 +18,25 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
+        Vector3 desiredPosition = target.position + GetProperOffset();
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
     }
+
+    Vector3 GetProperOffset()
+    {
+        float x = Mathf.Floor(target.position.x);
+        float z = Mathf.Floor(target.position.z);
+
+        if (z == 0 && x!=0)//z==0
+            return new Vector3(-9F, 9.5F, -5f);
+        else if (x == 9)//x==9
+            return new Vector3(-7f, 9.5f, -8f);
+        else if (z == 9)//z==9
+            return new Vector3(-5f, 9.5f, -6f);
+        else
+            return new Vector3(-5f, 9.5f, -4f);
+
+
+    }
+
 }

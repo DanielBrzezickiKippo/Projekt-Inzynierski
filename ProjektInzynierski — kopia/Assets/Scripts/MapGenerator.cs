@@ -10,6 +10,10 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject squareBlockPref;
 
+    [SerializeField]
+    private GameObject squareBoard;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,26 +46,50 @@ public class MapGenerator : MonoBehaviour
             default:
                 obj = Instantiate(singleBlockPref);
                 obj.transform.position = new Vector3(x, 0f, z);
-                obj.transform.rotation = Quaternion.Euler(new Vector3(0f, rotation, 0f));
                 break;
         }
+        obj.transform.rotation = Quaternion.Euler(new Vector3(0f, rotation, 0f));
         mapBlocks.Add(obj);
     }
 
     const int mapSize = 9;
-    void GenerateMap()
+
+    private void CreateBoard()
     {
+        GameObject obj = Instantiate(squareBoard);
+        obj.transform.position = new Vector3(mapSize / 2f, 0f, mapSize / 2f);
+        obj.transform.localScale = new Vector3(mapSize - 2, obj.transform.localScale.y, mapSize - 2);
+    }
+
+    private void GenerateMap()
+    {
+        CreateBoard();
+        
+
         for(int i = 0; i < mapSize-1; i++)
             GenerateBlock(i, 0f, i + 0.5f, 90f);//first row
 
         for(int i =0;i<mapSize-1;i++)
-            GenerateBlock(i, i + 0.5f, mapSize, 180f);//second row
+            GenerateBlock(i, i + 0.5f, mapSize, 0f);//second row
 
         for (int i = mapSize-1; i > 0; i--)
-            GenerateBlock(i, mapSize , i + 0.5f, 270f);//third row
+            GenerateBlock(i, mapSize , i + 0.5f, 90f);//third row
 
         for (int i = mapSize-1; i > 0; i--)
             GenerateBlock(i, i + 0.5f, 0f, 0f);//fourth row
 
+        SetAreaBlocks();
+
     }
+
+
+    private void SetAreaBlocks()
+    {
+        foreach(GameObject o in mapBlocks)
+        {
+            if(o.GetComponent<Area>())
+                o.GetComponent<Area>().SetArea("Siemka", Color.blue, 0);
+        }
+    }
+
 }
