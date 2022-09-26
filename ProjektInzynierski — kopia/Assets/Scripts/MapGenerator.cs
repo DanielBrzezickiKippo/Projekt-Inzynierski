@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class MapGenerator : MonoBehaviour
 {
+    [SerializeField]
+    private List<AreaData> areaData;
+
     [SerializeField]
     private GameObject singleBlockPref;
 
@@ -59,6 +64,13 @@ public class MapGenerator : MonoBehaviour
         GameObject obj = Instantiate(squareBoard);
         obj.transform.position = new Vector3(mapSize / 2f, 0f, mapSize / 2f);
         obj.transform.localScale = new Vector3(mapSize - 2, obj.transform.localScale.y, mapSize - 2);
+        obj.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+
+        
+        if (obj.GetComponent<Area>())
+        {
+            obj.GetComponent<Area>().SetArea("Codopoly",Color.white);
+        }
     }
 
     private void GenerateMap()
@@ -85,10 +97,10 @@ public class MapGenerator : MonoBehaviour
 
     private void SetAreaBlocks()
     {
-        foreach(GameObject o in mapBlocks)
+        for(int i =0;i< mapBlocks.Count;i++)
         {
-            if(o.GetComponent<Area>())
-                o.GetComponent<Area>().SetArea("Siemka", Color.blue, 0);
+            if(mapBlocks[i].GetComponent<Area>())
+                mapBlocks[i].GetComponent<Area>().SetArea(areaData[i]);
         }
     }
 

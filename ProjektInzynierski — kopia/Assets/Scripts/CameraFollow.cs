@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] public Transform target;
     [SerializeField] [Range(0.01f, 1f)]
     private float smoothSpeed = 0.125f;
 
@@ -18,8 +18,11 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 desiredPosition = target.position + GetProperOffset();
-        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
+        if (target)
+        {
+            Vector3 desiredPosition = target.position + GetProperOffset();
+            transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
+        }
     }
 
     Vector3 GetProperOffset()
