@@ -17,6 +17,7 @@ public class Player
 public enum Turn { 
     none,
     dice,
+    move,
     action,
     nextTurn
 }
@@ -27,12 +28,13 @@ public class GameManager : MonoBehaviour
     private int currentPlayerId;
     [SerializeField] private MapGenerator mapGenerator;
     [SerializeField] private List<GameObject> playerPrefabs;
-    [SerializeField] private List<Player> players;
 
     [SerializeField] private CameraFollow cameraFollow;
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private Button rollButton;
 
-    [SerializeField] private Turn turn = Turn.none;
+    [HideInInspector] private Turn turn = Turn.none;
+    [HideInInspector] private List<Player> players;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +76,6 @@ public class GameManager : MonoBehaviour
             p.player = Instantiate(playerPrefabs[p.characterId]);
             p.hp = 20;
         }
-        ////////
         SetNewTarget(Random.Range(0, players.Count));
         SetTurn(Turn.dice);
 
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
     void SetNewTarget(int playerId)
     {
         currentPlayerId = playerId;
+        uiManager.SetCurrentPlayer(players[currentPlayerId].name);
         cameraFollow.SetTarget(players[currentPlayerId].player.transform);
     }
 
@@ -107,18 +109,20 @@ public class GameManager : MonoBehaviour
                 rollButton.onClick.AddListener(()=>{
                     move = RollDice();
                     rollButton.gameObject.SetActive(false);
-                    SetTurn(Turn.action);
+                    SetTurn(Turn.move);
                 });
                 break;
-            case Turn.action:
+            case Turn.move:
                 StartCoroutine(MakeMove(currentPlayerId, move));
-                //SetTurn(Turn.nextTurn);
+                break;
+            case Turn.action:
+
                 break;
             case Turn.nextTurn:
                 int id = currentPlayerId;
                 id++;
 
-                Debug.Log("b: " + (id - 1) + " n: " + id);
+                //Debug.Log("b: " + (id - 1) + " n: " + id);
                 if (id > players.Count-1)
                     currentPlayerId = 0;
                 else
@@ -149,9 +153,26 @@ public class GameManager : MonoBehaviour
             if (players[playerId].currentAreaId > mapGenerator.mapBlocks.Count-1)
                 players[playerId].currentAreaId = 0;
             players[playerId].player.transform.position = mapGenerator.mapBlocks[players[playerId].currentAreaId].transform.position;
+            PlayerDirection(playerId);
             yield return new WaitForSeconds(0.5f);
         }
-        SetTurn(Turn.nextTurn);
+        SetTurn(Turn.action);
+    }
+
+    void PlayerDirection(int playerId)
+    {
+
+        float rotation;
+        if (players[playerId].currentAreaId >= 8 && players[playerId].currentAreaId < 16)
+            rotation = 90f;
+        else if (players[playerId].currentAreaId >= 16 && players[playerId].currentAreaId < 24)
+            rotation = 180f;
+        else if (players[playerId].currentAreaId >= 24 && players[playerId].currentAreaId < 32)
+            rotation = 270f;
+        else
+            rotation = 0f;
+
+        players[playerId].player.transform.localRotation = Quaternion.Euler(new Vector3(0f, rotation, 0f));
     }
 
 
