@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     int move = 0;
 
-    void SetTurn(Turn turn)
+    public void SetTurn(Turn turn)
     {
         this.turn = turn;
         Debug.Log("Zmiana na " + turn);
@@ -116,13 +116,14 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(MakeMove(currentPlayerId, move));
                 break;
             case Turn.action:
-
+                int blockId = players[currentPlayerId].currentAreaId;
+                Area block = mapGenerator.mapBlocks[blockId].GetComponent<Area>();
+                block.StepOn();
                 break;
             case Turn.nextTurn:
                 int id = currentPlayerId;
                 id++;
 
-                //Debug.Log("b: " + (id - 1) + " n: " + id);
                 if (id > players.Count-1)
                     currentPlayerId = 0;
                 else

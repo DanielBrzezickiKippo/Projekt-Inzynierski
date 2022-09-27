@@ -6,11 +6,14 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private TextMeshProUGUI playerInfo;
+
     [Header("Roll UI")]
     [SerializeField] private Button rollButton;
 
     [Header("Property UI")]
+    [SerializeField] private GameObject propertyUI;
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private List<Button> answerButtons;
 
@@ -29,8 +32,33 @@ public class UIManager : MonoBehaviour
 
     public void QuestionPlayer()
     {
+        Open(propertyUI);
+        //random question
+        questionText.text = "question";
+
+        //answer
+        for (int i =0;i<answerButtons.Count;i++) {
+            answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = "answer";
+            answerButtons[i].onClick.RemoveAllListeners();
+            answerButtons[i].onClick.AddListener(() => {
+
+                Close(propertyUI);
+                gameManager.SetTurn(Turn.nextTurn);
+            });
+        }
+
 
     }
+
+    void Open(GameObject obj)
+    {
+        obj.SetActive(true);
+    }
+    void Close(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+
 
     public void SetCurrentPlayer(string player)
     {

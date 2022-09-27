@@ -12,7 +12,10 @@ public class Plot : Area
 
     public override void StepOn()
     {
-        throw new System.NotImplementedException();
+        UIManager uiManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
+
+        uiManager.QuestionPlayer();
+
     }
 
     public override void SetBlock()
