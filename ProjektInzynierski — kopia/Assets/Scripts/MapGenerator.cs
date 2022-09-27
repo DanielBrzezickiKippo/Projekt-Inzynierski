@@ -32,7 +32,7 @@ public class MapGenerator : MonoBehaviour
         
     }
 
-    [SerializeField] List<GameObject> mapBlocks;
+    [HideInInspector] public List<GameObject> mapBlocks;
     void GenerateBlock(int iter,float x,float z,float rotation)
     {
 

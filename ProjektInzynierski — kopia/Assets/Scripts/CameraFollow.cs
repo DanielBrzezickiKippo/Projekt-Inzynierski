@@ -42,4 +42,10 @@ public class CameraFollow : MonoBehaviour
 
     }
 
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
+    }
+
 }

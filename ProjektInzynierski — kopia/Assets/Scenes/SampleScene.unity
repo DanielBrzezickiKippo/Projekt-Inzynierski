@@ -4538,7 +4538,11 @@ MonoBehaviour:
     properties: []
     hp: 0
     player: {fileID: 0}
+    currentAreaId: 0
+  mapGenerator: {fileID: 2055000460}
   playerPrefabs:
   - {fileID: 1022148595836406, guid: 5b5b1958cdf88ce49989e326859b9572, type: 3}
   players: []
   cameraFollow: {fileID: 1289045302}
+  rollButton: {fileID: 1036734533}
+  turn: 0

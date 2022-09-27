@@ -11,6 +11,7 @@ public class Player
     public List<Area> properties;
     [HideInInspector] public int hp;
     [HideInInspector] public GameObject player;
+    [HideInInspector] public int currentAreaId=0;
 }
 
 public enum Turn { 
@@ -22,14 +23,16 @@ public enum Turn {
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Player playersTurn;
+    //[SerializeField] private Player playersTurn;
+    private int currentPlayerId;
+    [SerializeField] private MapGenerator mapGenerator;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Player> players;
 
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private Button rollButton;
 
-    private Turn turn = Turn.none;
+    [SerializeField] private Turn turn = Turn.none;
 
     // Start is called before the first frame update
     void Start()
@@ -71,22 +74,27 @@ public class GameManager : MonoBehaviour
             p.player = Instantiate(playerPrefabs[p.characterId]);
             p.hp = 20;
         }
-        playersTurn = players[Random.Range(0, players.Count)];
+        ////////
+        SetNewTarget(Random.Range(0, players.Count));
+        SetTurn(Turn.dice);
 
-        HandleTurn();
-
-    }
-
-
-    public int RollDice()
-    {
-        if (turn == Turn.dice)
-            return Random.Range(2, 13);
-
-        return 0;
     }
 
     int move = 0;
+
+    void SetTurn(Turn turn)
+    {
+        this.turn = turn;
+        Debug.Log("Zmiana na " + turn);
+        HandleTurn();
+    }
+
+    void SetNewTarget(int playerId)
+    {
+        currentPlayerId = playerId;
+        cameraFollow.SetTarget(players[currentPlayerId].player.transform);
+    }
+
     void HandleTurn()
     {
         switch (turn)
@@ -99,31 +107,54 @@ public class GameManager : MonoBehaviour
                 rollButton.onClick.AddListener(()=>{
                     move = RollDice();
                     rollButton.gameObject.SetActive(false);
-                    turn = Turn.action;
-                    HandleTurn();
+                    SetTurn(Turn.action);
                 });
                 break;
             case Turn.action:
-
+                StartCoroutine(MakeMove(currentPlayerId, move));
+                //SetTurn(Turn.nextTurn);
                 break;
             case Turn.nextTurn:
-                int id = 0;
-                while (players[id] != playersTurn)                
-                    id++;
-
+                int id = currentPlayerId;
                 id++;
-                if (players[id] != null)
-                    playersTurn = players[id];
-                else
-                    playersTurn = players[0];
 
-                turn = Turn.dice;
+                Debug.Log("b: " + (id - 1) + " n: " + id);
+                if (id > players.Count-1)
+                    currentPlayerId = 0;
+                else
+                    currentPlayerId = id;
+
+                SetNewTarget(currentPlayerId);
+                SetTurn(Turn.dice);
                 break;
             case Turn.none:
                 break;
 
         }
     }
+
+    public int RollDice()
+    {
+        if (turn == Turn.dice)
+            return Random.Range(2, 13);
+
+        return 0;
+    }
+
+    IEnumerator MakeMove(int playerId, int move)
+    {
+        for (int i = 0; i < move; i++)
+        {
+            players[playerId].currentAreaId++;
+            if (players[playerId].currentAreaId > mapGenerator.mapBlocks.Count-1)
+                players[playerId].currentAreaId = 0;
+            players[playerId].player.transform.position = mapGenerator.mapBlocks[players[playerId].currentAreaId].transform.position;
+            yield return new WaitForSeconds(0.5f);
+        }
+        SetTurn(Turn.nextTurn);
+    }
+
+
 
 
 }
