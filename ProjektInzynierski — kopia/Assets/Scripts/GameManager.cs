@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class Player
@@ -9,8 +10,10 @@ public class Player
     public string name;
     public int characterId;
     public List<Area> properties;
+    public Color playerColor;
     [HideInInspector] public int hp;
     [HideInInspector] public GameObject player;
+    [HideInInspector] public GameObject playerInfo;
     [HideInInspector] public int currentAreaId=0;
 }
 
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
     private int currentPlayerId;
     [SerializeField] private MapGenerator mapGenerator;
     [SerializeField] private List<GameObject> playerPrefabs;
-
+    [SerializeField] private GameObject playerInfoPrefab;
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private Button rollButton;
@@ -53,10 +56,11 @@ public class GameManager : MonoBehaviour
     {
         List<Player> data = new List<Player>();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             Player p = new Player();
             p.name = Random.Range(0, 100).ToString();
+            p.playerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             data.Add(p);
         }
         
@@ -74,7 +78,11 @@ public class GameManager : MonoBehaviour
         {
             //CreateCharacter
             p.player = Instantiate(playerPrefabs[p.characterId]);
-            p.hp = 20;
+            p.hp = 5;
+
+            p.playerInfo = Instantiate(playerInfoPrefab,p.player.transform);
+            Vector3 playerPos = p.player.transform.localPosition;
+            p.playerInfo.transform.localPosition = new Vector3(playerPos.x, playerPos.y + 0.6f, playerPos.z);
         }
         SetNewTarget(Random.Range(0, players.Count));
         SetTurn(Turn.dice);
@@ -93,7 +101,7 @@ public class GameManager : MonoBehaviour
     void SetNewTarget(int playerId)
     {
         currentPlayerId = playerId;
-        uiManager.SetCurrentPlayer(players[currentPlayerId].name);
+        uiManager.SetCurrentPlayer(players[currentPlayerId]);
         cameraFollow.SetTarget(players[currentPlayerId].player.transform);
     }
 
@@ -102,13 +110,13 @@ public class GameManager : MonoBehaviour
         switch (turn)
         {
             case Turn.dice:
-                if (!rollButton.gameObject.activeSelf)
-                    rollButton.gameObject.SetActive(true);
+                SetPlayersUI();
+                uiManager.RollButton(true);
 
                 rollButton.onClick.RemoveAllListeners();
                 rollButton.onClick.AddListener(()=>{
                     move = RollDice();
-                    rollButton.gameObject.SetActive(false);
+                    uiManager.RollButton(false,move);
                     SetTurn(Turn.move);
                 });
                 break;
@@ -130,6 +138,7 @@ public class GameManager : MonoBehaviour
                     currentPlayerId = id;
 
                 SetNewTarget(currentPlayerId);
+                SetPlayersUI();
                 SetTurn(Turn.dice);
                 break;
             case Turn.none:
@@ -177,6 +186,33 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void CheckPlayerAnswer(Question question, string answer, Plot plot)
+    {
+        bool correct = question.isCorrect(answer);
+        bool plotHasOwner = plot.hasOwner();
+        if (correct && plotHasOwner) { }//skip
+            //DealDamage(currentPlayerId, plot.ownerId, plot.damage);
+        else if(correct && !plotHasOwner)
+            plot.SetOwner(currentPlayerId, players[currentPlayerId].playerColor);
+        else if(!correct && plotHasOwner)
+            DealDamage(plot.ownerId, currentPlayerId, plot.damage);
+        else if(!correct && !plotHasOwner) { }//skip
+    }
 
+    public void DealDamage(int winningId, int loosingId,int amount)
+    {
+        players[winningId].hp += amount;
+        players[loosingId].hp -= amount;
+        SetPlayersUI();
+    }
+
+
+    void SetPlayersUI()
+    {
+        foreach(Player player in players)
+        {
+            player.playerInfo.GetComponentInChildren<TextMeshPro>().text = player.hp.ToString();
+        }
+    }
 
 }

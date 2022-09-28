@@ -7,7 +7,7 @@ public class AreaData
 {
     public string name;
     public string category;
-    public int damage;
+    public int damage=1;
     public Color color = Color.white;
     public AreaType type;
 }
@@ -25,7 +25,7 @@ public enum AreaType
 
 public abstract class Area: MonoBehaviour
 {
-    [HideInInspector]public string areaName;
+    [HideInInspector] public string areaName;
     [HideInInspector] public Color color;
     [HideInInspector] public int damage;
     [HideInInspector] public string category;

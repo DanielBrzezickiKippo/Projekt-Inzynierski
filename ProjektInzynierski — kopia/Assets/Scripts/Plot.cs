@@ -9,12 +9,17 @@ public class Plot : Area
     [SerializeField] private TextMeshPro plotArea;
     [SerializeField] private TextMeshPro plotDamage;
 
+    public int ownerId=-1;
+
 
     public override void StepOn()
     {
         UIManager uiManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
 
-        uiManager.QuestionPlayer();
+        if(type==AreaType.ToBuy)
+            uiManager.QuestionPlayer(this);
+
+
 
     }
 
@@ -30,5 +35,19 @@ public class Plot : Area
             plotDamage.text = damage.ToString();
     }
 
+
+    public bool hasOwner()
+    {
+        if (ownerId == -1)
+            return false;
+        return true;
+    }
+
+    public void SetOwner(int playerId, Color playerColor)
+    {
+        ownerId = playerId;
+        color = playerColor;
+        SetBlock();
+    }
 
 }
