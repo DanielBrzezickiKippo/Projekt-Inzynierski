@@ -16,8 +16,13 @@ public class Plot : Area
     {
         UIManager uiManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
 
-        if(type==AreaType.ToBuy)
+        GameManager gameManager = uiManager.gameManager;
+
+
+        if (type == AreaType.ToBuy && ownerId != gameManager.GetCurrentPlayerTurnId())
             uiManager.QuestionPlayer(this);
+        else if (type == AreaType.ToBuy && ownerId == gameManager.GetCurrentPlayerTurnId())
+            uiManager.LearnPlayer(this);
 
 
 

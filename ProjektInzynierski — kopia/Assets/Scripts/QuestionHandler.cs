@@ -4,6 +4,12 @@ using UnityEngine;
 using System;
 using System.Linq;
 
+[System.Serializable]
+public class Lesson
+{
+    public string category;
+    public string lesson;
+}
 
 [System.Serializable]
 public class Question
@@ -46,9 +52,34 @@ public class QuestionHandler : MonoBehaviour
 {
 
     [SerializeField] private List<Question> questions;
+    [SerializeField] private List<Lesson> lessons;
 
     public Question GetRandomQuestion()
     {
         return questions[UnityEngine.Random.Range(0, questions.Count)];
+    }
+
+    public Question GetRandomQuestionByCategory(string category)
+    {
+        List<Question> questionsByCategory = new List<Question>();
+        foreach (Question question in questions)
+        {
+            if (question.category == category)
+                questionsByCategory.Add(question);
+        }
+
+        return questionsByCategory[UnityEngine.Random.Range(0, questionsByCategory.Count)];
+    }
+
+    public Lesson GetRandomLessonByCategory(string category)
+    {
+        List<Lesson> lessonsByCategory = new List<Lesson>();
+        foreach(Lesson lesson in lessons)
+        {
+            if (lesson.category == category)
+                lessonsByCategory.Add(lesson);
+        }
+
+        return lessonsByCategory[UnityEngine.Random.Range(0, lessonsByCategory.Count)];
     }
 }

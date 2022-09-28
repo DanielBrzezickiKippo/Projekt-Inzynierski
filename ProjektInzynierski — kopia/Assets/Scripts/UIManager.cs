@@ -7,7 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private QuestionHandler questionHandler;
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] public GameManager gameManager;
     [SerializeField] private TextMeshProUGUI playerInfo;
     [SerializeField] private Camera mainCamera;
 
@@ -20,6 +20,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private List<Button> answerButtons;
     [SerializeField] private Color defaultColor;
+
+    [Header("Learn UI")]
+    [SerializeField] private GameObject learnUI;
+    [SerializeField] private TextMeshProUGUI lCategoryText;
+    [SerializeField] private TextMeshProUGUI lLearnText;
+    [SerializeField] private Button lessonButton;
 
 
     // Start is called before the first frame update
@@ -37,7 +43,7 @@ public class UIManager : MonoBehaviour
 
     public void QuestionPlayer(Plot plot)
     {
-        Question question = questionHandler.GetRandomQuestion();
+        Question question = questionHandler.GetRandomQuestionByCategory(plot.category);
 
         Open(propertyUI);
         question.RandomSortAnswers();
@@ -55,15 +61,30 @@ public class UIManager : MonoBehaviour
                 AnswerButtons(false);
                 SetCorrectButtons(question.correctAnswer);
                 gameManager.CheckPlayerAnswer(question,answer,plot);
-                StartCoroutine(EndQuestioning());
+                StartCoroutine(End(propertyUI,1.5f));
             });
         }
     }
 
-    IEnumerator EndQuestioning()
+    public void LearnPlayer(Plot plot)
     {
-        yield return new WaitForSeconds(1.5f);
-        Close(propertyUI);
+        Lesson lesson = questionHandler.GetRandomLessonByCategory(plot.category);
+
+        lCategoryText.text = lesson.category;
+        lLearnText.text = lesson.lesson;
+
+        Open(learnUI);
+
+        lessonButton.onClick.RemoveAllListeners();
+        lessonButton.onClick.AddListener(() =>{
+            StartCoroutine(End(learnUI,0f));
+        });
+    }
+
+    IEnumerator End(GameObject objectToClose,float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        Close(objectToClose);
         gameManager.SetTurn(Turn.nextTurn);
     }
 

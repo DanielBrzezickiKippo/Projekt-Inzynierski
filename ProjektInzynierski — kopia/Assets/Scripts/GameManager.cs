@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     public void SetTurn(Turn turn)
     {
         this.turn = turn;
-        Debug.Log("Zmiana na " + turn);
+        //Debug.Log("Zmiana na " + turn);
         HandleTurn();
     }
 
@@ -215,4 +215,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public int GetCurrentPlayerTurnId()
+    {
+        return currentPlayerId;
+    }
 }
