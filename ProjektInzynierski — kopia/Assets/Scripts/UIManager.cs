@@ -30,6 +30,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lLearnText;
     [SerializeField] private Button lessonButton;
 
+    [Header("Select UI")]
+    [SerializeField] public GameObject selectUI;
+    [SerializeField] private GameObject selectableContent;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private GameObject blockUIprefab;    
+
+
 
 
 
@@ -67,7 +75,7 @@ public class UIManager : MonoBehaviour
                 SetCorrectButtons(question.correctAnswer);
                 gameManager.CheckPlayerAnswer(question,answer,plot);
 
-                //StartCoroutine(End(propertyUI,1.5f, Turn.nextTurn));
+                //StartCoroutine(End(propertyUI, 1.5f, Turn.nextTurn));
             });
         }
     }
@@ -86,6 +94,31 @@ public class UIManager : MonoBehaviour
         lessonButton.onClick.AddListener(() =>{
             StartCoroutine(End(learnUI,0f, Turn.nextTurn));
         });
+    }
+
+
+    public void CreateSelectables(List<Area> areaList, int selectableAction)
+    {
+        DeleteSelectables();
+        Open(selectUI);
+        if (areaList.Count == 0)
+        {
+            StartCoroutine(End(selectUI, 0f, Turn.nextTurn));
+            return;
+        }
+        foreach (Area area in areaList)
+        {
+            BlockUI blockUI = Instantiate(blockUIprefab, selectableContent.transform).GetComponent<BlockUI>();
+            blockUI.SetBlock(area, selectableAction);
+        }
+    }
+
+    void DeleteSelectables()
+    {
+        foreach(Transform obj in selectableContent.transform)
+        {
+            Destroy(obj.gameObject);
+        }
     }
 
     public void DoNothing()
@@ -134,7 +167,6 @@ public class UIManager : MonoBehaviour
     {
         playerInfo.text = player.name;// +"\nzycia: "+player.hp;
         mainCamera.backgroundColor = player.playerColor;
-
     }
 
 

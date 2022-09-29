@@ -35,10 +35,9 @@ public class Plot : Area
                 gameManager.PlayerGoToPrison();
         }
         else if (type == AreaType.KnowledgeCompetition)
-        {
-
-
-        }
+            uiManager.CreateSelectables(gameManager.GetCurrentPlayer().properties,0);
+        else if (type == AreaType.Teleport)
+            uiManager.CreateSelectables(gameManager.GetPlotsWherePlayerCanTeleport(), 1);
 
         //else if (type == AreaType.Start)
         //     gameManager.PlayerGoThroughStart();
@@ -69,10 +68,11 @@ public class Plot : Area
         return true;
     }
 
-    public void SetOwner(int playerId, Color playerColor)
+    public void SetOwner(Player player ,int playerId)
     {
         ownerId = playerId;
-        color = playerColor;
+        color = player.playerColor;
+        player.properties.Add(this);
         SetBlock();
     }
 

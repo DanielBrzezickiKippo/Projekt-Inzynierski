@@ -12,10 +12,14 @@ public class BlockUI : MonoBehaviour
     [SerializeField] private Image areaImage;
     [SerializeField] private Button button;
 
+    UIManager uiManager;
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        uiManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
+        gameManager = uiManager.gameManager;
     }
 
     // Update is called once per frame
@@ -35,21 +39,11 @@ public class BlockUI : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             if (action == 0)
-                ChooseDoubleDamage(area);
+                gameManager.ChooseDoubleDamage(area);
             else
-                ChooseTeleport();
+                gameManager.ChooseTeleport(area);
 
         });
-    }
-
-    public void ChooseDoubleDamage(Area area)
-    {
-        area.damage = area.damage * 2;
-    }
-
-    public void ChooseTeleport()
-    {
-
     }
 
 }

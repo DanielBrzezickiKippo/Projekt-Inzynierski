@@ -25,6 +25,7 @@ public enum AreaType
 
 public abstract class Area: MonoBehaviour
 {
+    [HideInInspector] public int areaId;
     [HideInInspector] public string areaName;
     [HideInInspector] public Color color;
     [HideInInspector] public int damage;
@@ -44,8 +45,9 @@ public abstract class Area: MonoBehaviour
         SetBlock();
     }
 
-    public void SetArea(AreaData area)
+    public void SetArea(AreaData area,int id)
     {
+        this.areaId = id;
         this.areaName =area.name;
         this.damage =area.damage;
         this.color = area.color;

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
 
     [HideInInspector] private Turn turn = Turn.none;
-    [HideInInspector] private List<Player> players;
+    [SerializeField] private List<Player> players;
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +61,12 @@ public class GameManager : MonoBehaviour
     {
         List<Player> data = new List<Player>();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i <2; i++)
         {
             Player p = new Player();
             p.name = Random.Range(0, 100).ToString();
             p.playerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            p.properties = new List<Area>();
             data.Add(p);
         }
         
@@ -134,7 +135,7 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case Turn.move:
-                StartCoroutine(MakeMove(currentPlayerId, move));
+                StartCoroutine(MakeMove(currentPlayerId, move, Turn.action));
                 break;
             case Turn.action:
                 int blockId = players[currentPlayerId].currentAreaId;
@@ -170,7 +171,7 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
-    IEnumerator MakeMove(int playerId, int move)
+    IEnumerator MakeMove(int playerId, int move,Turn turn)
     {
         for (int i = 0; i < move; i++)
         {
@@ -182,9 +183,9 @@ public class GameManager : MonoBehaviour
             }
             players[playerId].player.transform.position = mapGenerator.mapBlocks[players[playerId].currentAreaId].transform.position;
             PlayerDirection(playerId);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.35f);
         }
-        SetTurn(Turn.action);
+        SetTurn(turn);
     }
 
     void PlayerDirection(int playerId)
@@ -213,7 +214,7 @@ public class GameManager : MonoBehaviour
             if (correct && plotHasOwner) { }//skip
                                             //DealDamage(currentPlayerId, plot.ownerId, plot.damage);
             else if (correct && !plotHasOwner)
-                plot.SetOwner(currentPlayerId, players[currentPlayerId].playerColor);
+                plot.SetOwner(players[currentPlayerId],currentPlayerId);
             else if (!correct && plotHasOwner)
                 DealDamage(plot.ownerId, currentPlayerId, plot.damage);
             else if (!correct && !plotHasOwner) { }//skip
@@ -269,4 +270,44 @@ public class GameManager : MonoBehaviour
     {
         return currentPlayerId;
     }
+
+
+    public Player GetCurrentPlayer()
+    {
+        return players[currentPlayerId];
+    }
+
+    public List<Area> GetPlotsWherePlayerCanTeleport()
+    {
+        List<Area> areaList = new List<Area>();
+
+        foreach(GameObject areaObject in mapGenerator.mapBlocks)
+        {
+            Plot plot = areaObject.GetComponent<Plot>();
+            if (plot.type == AreaType.ToBuy && (!plot.hasOwner() || plot.ownerId == currentPlayerId))
+                areaList.Add(plot);
+        }
+        
+        return areaList;
+    }
+
+    public int CountDistance(int areaId, int destinationAreaId)
+    {
+        int distance = (mapGenerator.mapBlocks.Count + destinationAreaId) -areaId;
+        return distance;
+    }
+
+    public void ChooseDoubleDamage(Area area)
+    {
+        area.damage = area.damage * 2;
+        area.SetBlock();
+        StartCoroutine(uiManager.End(uiManager.selectUI, 0f, Turn.nextTurn));
+    }
+
+    public void ChooseTeleport(Area area)
+    {
+        move = CountDistance(players[currentPlayerId].currentAreaId, area.areaId);
+        StartCoroutine(uiManager.End(uiManager.selectUI, 0f, Turn.move));
+    }
+
 }

@@ -100,7 +100,7 @@ public class MapGenerator : MonoBehaviour
         for(int i =0;i< mapBlocks.Count;i++)
         {
             if(mapBlocks[i].GetComponent<Area>())
-                mapBlocks[i].GetComponent<Area>().SetArea(areaData[i]);
+                mapBlocks[i].GetComponent<Area>().SetArea(areaData[i],i);
         }
     }
 
