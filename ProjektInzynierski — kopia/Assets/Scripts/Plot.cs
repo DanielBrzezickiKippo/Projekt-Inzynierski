@@ -34,6 +34,11 @@ public class Plot : Area
             else
                 gameManager.PlayerGoToPrison();
         }
+        else if (type == AreaType.KnowledgeCompetition)
+        {
+
+
+        }
 
         //else if (type == AreaType.Start)
         //     gameManager.PlayerGoThroughStart();
