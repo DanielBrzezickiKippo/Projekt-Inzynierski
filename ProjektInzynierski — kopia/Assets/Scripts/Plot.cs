@@ -23,6 +23,22 @@ public class Plot : Area
             uiManager.QuestionPlayer(this);
         else if (type == AreaType.ToBuy && ownerId == gameManager.GetCurrentPlayerTurnId())
             uiManager.LearnPlayer(this);
+        else if (type == AreaType.Chance)
+            uiManager.DoNothing();
+        else if (type == AreaType.Start)
+            uiManager.DoNothing();
+        else if (type == AreaType.Prison)
+        {
+            if(gameManager.IsPlayerInPrison())
+                uiManager.QuestionPlayer(this);
+            else
+                gameManager.PlayerGoToPrison();
+        }
+
+        //else if (type == AreaType.Start)
+        //     gameManager.PlayerGoThroughStart();
+
+
 
 
 

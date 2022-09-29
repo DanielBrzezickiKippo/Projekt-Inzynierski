@@ -15,6 +15,7 @@ public class Player
     [HideInInspector] public GameObject player;
     [HideInInspector] public GameObject playerInfo;
     [HideInInspector] public int currentAreaId=0;
+    [HideInInspector] public bool isInPrison = false;
 }
 
 public enum Turn { 
@@ -27,6 +28,10 @@ public enum Turn {
 
 public class GameManager : MonoBehaviour
 {
+    //ONLY TO TEST
+    [SerializeField] private TMP_InputField rollInput;
+
+
     //[SerializeField] private Player playersTurn;
     private int currentPlayerId;
     [SerializeField] private MapGenerator mapGenerator;
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerInfoPrefab;
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private Button rollButton;
+
 
     [HideInInspector] private Turn turn = Turn.none;
     [HideInInspector] private List<Player> players;
@@ -111,14 +116,22 @@ public class GameManager : MonoBehaviour
         {
             case Turn.dice:
                 SetPlayersUI();
-                uiManager.RollButton(true);
+                if (!players[currentPlayerId].isInPrison)
+                {
+                    uiManager.RollButton(true);
 
-                rollButton.onClick.RemoveAllListeners();
-                rollButton.onClick.AddListener(()=>{
-                    move = RollDice();
-                    uiManager.RollButton(false,move);
-                    SetTurn(Turn.move);
-                });
+                    uiManager.rollButton.onClick.RemoveAllListeners();
+                    uiManager.rollButton.onClick.AddListener(() =>
+                    {
+                        move = RollDice();
+                        uiManager.RollButton(false, move);
+                        SetTurn(Turn.move);
+                    });
+                }
+                else
+                {
+                    mapGenerator.mapBlocks[players[currentPlayerId].currentAreaId].GetComponent<Area>().StepOn();
+                }
                 break;
             case Turn.move:
                 StartCoroutine(MakeMove(currentPlayerId, move));
@@ -149,6 +162,8 @@ public class GameManager : MonoBehaviour
 
     public int RollDice()
     {
+        if (rollInput.text != "")
+            return int.Parse(rollInput.text);
         if (turn == Turn.dice)
             return Random.Range(2, 13);
 
@@ -160,8 +175,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < move; i++)
         {
             players[playerId].currentAreaId++;
-            if (players[playerId].currentAreaId > mapGenerator.mapBlocks.Count-1)
+            if (players[playerId].currentAreaId > mapGenerator.mapBlocks.Count - 1)
+            {
                 players[playerId].currentAreaId = 0;
+                PlayerGoThroughStart();
+            }
             players[playerId].player.transform.position = mapGenerator.mapBlocks[players[playerId].currentAreaId].transform.position;
             PlayerDirection(playerId);
             yield return new WaitForSeconds(0.5f);
@@ -190,13 +208,26 @@ public class GameManager : MonoBehaviour
     {
         bool correct = question.isCorrect(answer);
         bool plotHasOwner = plot.hasOwner();
-        if (correct && plotHasOwner) { }//skip
-            //DealDamage(currentPlayerId, plot.ownerId, plot.damage);
-        else if(correct && !plotHasOwner)
-            plot.SetOwner(currentPlayerId, players[currentPlayerId].playerColor);
-        else if(!correct && plotHasOwner)
-            DealDamage(plot.ownerId, currentPlayerId, plot.damage);
-        else if(!correct && !plotHasOwner) { }//skip
+        if (!IsPlayerInPrison())
+        {
+            if (correct && plotHasOwner) { }//skip
+                                            //DealDamage(currentPlayerId, plot.ownerId, plot.damage);
+            else if (correct && !plotHasOwner)
+                plot.SetOwner(currentPlayerId, players[currentPlayerId].playerColor);
+            else if (!correct && plotHasOwner)
+                DealDamage(plot.ownerId, currentPlayerId, plot.damage);
+            else if (!correct && !plotHasOwner) { }//skip
+        }
+        else
+        {
+            if (correct)
+            {
+                players[currentPlayerId].isInPrison = false;
+                StartCoroutine(uiManager.End(uiManager.propertyUI, 1.5f, Turn.dice));
+                return;
+            }
+        }
+        StartCoroutine(uiManager.End(uiManager.propertyUI, 1.5f, Turn.nextTurn));
     }
 
     public void DealDamage(int winningId, int loosingId,int amount)
@@ -207,6 +238,25 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void PlayerGoThroughStart()
+    {
+        players[currentPlayerId].hp++;
+        StartCoroutine(uiManager.SendMessage($"Gracz {players[currentPlayerId].name} zyskuje ¿ycie", 1.5f));
+        SetPlayersUI();
+    }
+
+    public void PlayerGoToPrison()
+    {
+        players[currentPlayerId].isInPrison = true;
+        StartCoroutine(uiManager.SendMessage($"Gracz {players[currentPlayerId].name} trafia do wiezienia", 1.5f));
+        SetTurn(Turn.nextTurn);
+    }
+
+    public bool IsPlayerInPrison()
+    {
+        return players[currentPlayerId].isInPrison;
+    }
+
     void SetPlayersUI()
     {
         foreach(Player player in players)
@@ -214,7 +264,6 @@ public class GameManager : MonoBehaviour
             player.playerInfo.GetComponentInChildren<TextMeshPro>().text = player.hp.ToString();
         }
     }
-
 
     public int GetCurrentPlayerTurnId()
     {

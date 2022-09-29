@@ -11,11 +11,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerInfo;
     [SerializeField] private Camera mainCamera;
 
+    [Header("Notify")]
+    [SerializeField] private TextMeshProUGUI notificationText;
+
     [Header("Roll UI")]
-    [SerializeField] private Button rollButton;
+    [SerializeField] public Button rollButton;
 
     [Header("Property UI")]
-    [SerializeField] private GameObject propertyUI;
+    [SerializeField] public GameObject propertyUI;
     [SerializeField] private TextMeshProUGUI categoryText;
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private List<Button> answerButtons;
@@ -26,6 +29,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lCategoryText;
     [SerializeField] private TextMeshProUGUI lLearnText;
     [SerializeField] private Button lessonButton;
+
+
 
 
     // Start is called before the first frame update
@@ -61,10 +66,12 @@ public class UIManager : MonoBehaviour
                 AnswerButtons(false);
                 SetCorrectButtons(question.correctAnswer);
                 gameManager.CheckPlayerAnswer(question,answer,plot);
-                StartCoroutine(End(propertyUI,1.5f));
+
+                //StartCoroutine(End(propertyUI,1.5f, Turn.nextTurn));
             });
         }
     }
+
 
     public void LearnPlayer(Plot plot)
     {
@@ -77,15 +84,20 @@ public class UIManager : MonoBehaviour
 
         lessonButton.onClick.RemoveAllListeners();
         lessonButton.onClick.AddListener(() =>{
-            StartCoroutine(End(learnUI,0f));
+            StartCoroutine(End(learnUI,0f, Turn.nextTurn));
         });
     }
 
-    IEnumerator End(GameObject objectToClose,float timeToWait)
+    public void DoNothing()
+    {
+        gameManager.SetTurn(Turn.nextTurn);
+    }
+
+    public IEnumerator End(GameObject objectToClose,float timeToWait,Turn turn)
     {
         yield return new WaitForSeconds(timeToWait);
         Close(objectToClose);
-        gameManager.SetTurn(Turn.nextTurn);
+        gameManager.SetTurn(turn);
     }
 
     void SetCorrectButtons(string answer)
@@ -138,6 +150,15 @@ public class UIManager : MonoBehaviour
             rollButton.GetComponentInChildren<TextMeshProUGUI>().text = "Wylosowano: " + rolled;
             rollButton.interactable = false;
         }
+    }
+
+
+    public IEnumerator SendMessage(string message,float time)
+    {
+        notificationText.text = message;
+        notificationText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(time);
+        notificationText.gameObject.SetActive(false);
     }
 
 }

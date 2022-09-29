@@ -15,7 +15,16 @@ public class Board : Area
 
     public override void StepOn()
     {
-        throw new System.NotImplementedException();
+        UIManager uiManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
+
+        //GameManager gameManager = uiManager.gameManager;
+
+        if (type == AreaType.Start)
+            uiManager.DoNothing();
+        //else if (type == AreaType.Prison)
+       //     ques
+
+        //throw new System.NotImplementedException();
     }
 
 }

@@ -181,8 +181,8 @@ GameObject:
   - component: {fileID: 4467360139354293208}
   - component: {fileID: 4438076140707326600}
   - component: {fileID: 4449214392791058268}
-  - component: {fileID: 2916065328664338748}
   - component: {fileID: 4397022256880448926}
+  - component: {fileID: 8356140335156346422}
   m_Layer: 0
   m_Name: square
   m_TagString: Untagged
@@ -254,24 +254,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2916065328664338748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461695401164650844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c7f759f94f851447a8d44663f421e5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaName: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  damage: 0
-  category: 
-  type: 0
-  boardArea: {fileID: 6893875498946343472}
 --- !u!65 &4397022256880448926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,3 +267,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000001, z: 1.0000001}
   m_Center: {x: 0, y: -0.49999997, z: -0.000000059604645}
+--- !u!114 &8356140335156346422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4461695401164650844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997ae71ab24d30640a7525352b22daa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaName: 
+  color: {r: 0, g: 0, b: 0, a: 0}
+  damage: 0
+  category: 
+  type: 0
+  blockRenderer: {fileID: 0}
+  plotArea: {fileID: 6893875498946343472}
+  plotDamage: {fileID: 0}
+  ownerId: -1

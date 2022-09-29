@@ -54,6 +54,7 @@ public class QuestionHandler : MonoBehaviour
     [SerializeField] private List<Question> questions;
     [SerializeField] private List<Lesson> lessons;
 
+
     public Question GetRandomQuestion()
     {
         return questions[UnityEngine.Random.Range(0, questions.Count)];
