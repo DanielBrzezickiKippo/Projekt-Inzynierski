@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private Player playersTurn;
     private int currentPlayerId;
-    [SerializeField] private MapGenerator mapGenerator;
+    [SerializeField] public MapGenerator mapGenerator;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private GameObject playerInfoPrefab;
     [SerializeField] private CameraFollow cameraFollow;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadPlayers(TestData());
+        LoadPlayers(GetData());
         CreatePlayers();
     }
 
@@ -57,14 +57,15 @@ public class GameManager : MonoBehaviour
         
     }
 
-    List<Player> TestData()
+    List<Player> GetData()
     {
+        List<string> playersNames = MenuSystem.instance.GetPlayers();
         List<Player> data = new List<Player>();
 
-        for (int i = 0; i <2; i++)
+        for (int i = 0; i <playersNames.Count; i++)
         {
             Player p = new Player();
-            p.name = Random.Range(0, 100).ToString();
+            p.name = playersNames[i];//Random.Range(0, 100).ToString();
             p.playerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             p.properties = new List<Area>();
             data.Add(p);
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
             }
             players[playerId].player.transform.position = mapGenerator.mapBlocks[players[playerId].currentAreaId].transform.position;
             PlayerDirection(playerId);
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(0.15f);
         }
         SetTurn(turn);
     }
@@ -238,6 +239,11 @@ public class GameManager : MonoBehaviour
         SetPlayersUI();
     }
 
+    public void DealDamage(Player player,int amount)
+    {
+        player.hp -= amount;
+    }
+
 
     public void PlayerGoThroughStart()
     {
@@ -258,7 +264,7 @@ public class GameManager : MonoBehaviour
         return players[currentPlayerId].isInPrison;
     }
 
-    void SetPlayersUI()
+    public void SetPlayersUI()
     {
         foreach(Player player in players)
         {
@@ -275,6 +281,22 @@ public class GameManager : MonoBehaviour
     public Player GetCurrentPlayer()
     {
         return players[currentPlayerId];
+    }
+
+    public List<Player> GetPlayers()
+    {
+        return players;
+    }
+
+    public List<Player> GetPlayersWithoutCurrentId()
+    {
+        List<Player> pls = new List<Player>();
+        for(int i = 0; i < players.Count; i++)
+        {
+            if (i != currentPlayerId)
+                pls.Add(players[i]);
+        }
+        return pls;
     }
 
     public List<Area> GetPlotsWherePlayerCanTeleport()
@@ -310,4 +332,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(uiManager.End(uiManager.selectUI, 0f, Turn.move));
     }
 
+    public void RemovePlotFromPlayer(int ownerId, Area areaToDelete)
+    {
+        //areaToDelete.GetComponent<Plot>().ClearOwner();
+        players[ownerId].properties.Remove(areaToDelete);
+    }
 }

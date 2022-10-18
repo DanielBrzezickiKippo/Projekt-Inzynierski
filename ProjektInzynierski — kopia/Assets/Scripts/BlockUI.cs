@@ -11,6 +11,7 @@ public class BlockUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private Image areaImage;
     [SerializeField] private Button button;
+    [SerializeField] private Image hpImage;
 
     UIManager uiManager;
     GameManager gameManager;
@@ -30,20 +31,50 @@ public class BlockUI : MonoBehaviour
 
     public void SetBlock(Area area, int action)
     {
-        categoryText.text = area.category;
-        areaNameText.text = area.areaName;
-        hpText.text = $"+{area.damage * 2}";
-        areaImage.color = area.color;
+
+        if(action==0)
+            SetUI(area.category, area.areaName, $"+{area.damage * 2}", area.color, true);
+        else
+            SetUI(area.category, area.areaName, $"+{area.damage * 2}", area.color, false);
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             if (action == 0)
                 gameManager.ChooseDoubleDamage(area);
-            else
+            else if (action == 1)
                 gameManager.ChooseTeleport(area);
-
+            else if (action == 2)
+            {
+                area.GetComponent<Plot>().ClearOwner();
+                //gameManager.RemovePlotFromPlayer(area.GetComponent<Plot>().ownerId, area);
+                StartCoroutine(uiManager.End(uiManager.selectUI, 0f, Turn.nextTurn));
+            }
         });
+    }
+
+    public void SetBlockDealHp(Player player, int amount)
+    {
+        SetUI("Gracz",player.name,"-1",player.playerColor,true);
+
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() =>
+        {
+            gameManager.DealDamage(player, amount);
+            StartCoroutine(uiManager.End(uiManager.selectUI, 0f, Turn.nextTurn));
+        });
+    }
+
+    void SetUI(string cat, string name, string amount,  Color color, bool isActive)
+    {
+        categoryText.text = cat;
+        areaNameText.text = name;
+        hpText.text = amount;
+        areaImage.color = color;
+
+        categoryText.gameObject.SetActive(isActive);
+        areaNameText.gameObject.SetActive(isActive);
+        hpText.gameObject.SetActive(isActive);
     }
 
 }

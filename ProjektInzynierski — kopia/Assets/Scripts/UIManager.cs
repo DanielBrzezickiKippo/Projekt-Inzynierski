@@ -35,11 +35,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject selectableContent;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private GameObject blockUIprefab;    
+    [SerializeField] private GameObject blockUIprefab;
 
 
-
-
+    [Header("PopUp")]
+    [SerializeField] public GameObject popUI;
+    [SerializeField] private TextMeshProUGUI titlePopText;
+    [SerializeField] private TextMeshProUGUI descriptionPopText;
+    [SerializeField] private Button buttonPop;
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +104,11 @@ public class UIManager : MonoBehaviour
     {
         DeleteSelectables();
         Open(selectUI);
+
+
+        titleText.text = "Szansa";
+        descriptionText.text = "Wybierz dzia³ do którego chcesz sie przenieœæ.";
+
         if (areaList.Count == 0)
         {
             StartCoroutine(End(selectUI, 0f, Turn.nextTurn));
@@ -113,7 +121,55 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void DeleteSelectables()
+    public void CreateSelectablesPlayerToDealHP(List<Player> players, int amount)
+    {
+        DeleteSelectables();
+        titleText.text = "Szansa";
+        descriptionText.text = "Wybierz przeciwnika, któremu odbierzesz 1 ¿ycie.";
+        if (players.Count == 0)
+        {
+            StartCoroutine(End(selectUI, 0f, Turn.nextTurn));
+            return;
+        }
+        foreach (Player player in players)
+        {
+            BlockUI blockUI = Instantiate(blockUIprefab, selectableContent.transform).GetComponent<BlockUI>();
+            blockUI.SetBlockDealHp(player,amount);
+
+        }
+        Open(selectUI);
+    }
+
+    public void CreateSelectablesAreaToDestroy(List<Player> players)
+    {
+        DeleteSelectables();
+
+        titleText.text = "Szansa";
+        descriptionText.text = "Wyczyœæ dzia³ przeciwnika.";
+
+        int allProperties = 0;
+        foreach (Player p in players) {
+            allProperties += p.properties.Count;
+            foreach (Area area in p.properties)
+            {
+                BlockUI blockUI = Instantiate(blockUIprefab, selectableContent.transform).GetComponent<BlockUI>();
+                blockUI.SetBlock(area, 2);
+            }
+        }
+        if (allProperties == 0)
+        {
+            ChanceType randomChance = ChanceType.destoyCity;
+            //Random r = new Random();
+            Chance chance = GetComponent<Chance>();
+            chance.GiveAChance(chance.RandomEnum<ChanceType>(randomChance));//(ChanceType)Random.Range(0,4));}
+        }
+        else
+            Open(selectUI);
+        //StartCoroutine(End(selectUI, 0f, Turn.nextTurn));
+    }
+
+
+    public void DeleteSelectables()
     {
         foreach(Transform obj in selectableContent.transform)
         {
@@ -131,6 +187,19 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
         Close(objectToClose);
         gameManager.SetTurn(turn);
+    }
+    public delegate void toDoAfterClickPopUI();
+    public void SetPopUI(string title, string description,toDoAfterClickPopUI functon )
+    {
+        titlePopText.text = title;
+        descriptionPopText.text = description;
+        Open(popUI);
+        buttonPop.onClick.RemoveAllListeners();
+        buttonPop.onClick.AddListener(() =>
+        {
+            functon();
+            Close(popUI);
+        });
     }
 
     void SetCorrectButtons(string answer)

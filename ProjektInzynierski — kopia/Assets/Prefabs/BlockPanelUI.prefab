@@ -682,6 +682,7 @@ MonoBehaviour:
   hpText: {fileID: 8970091097132274121}
   areaImage: {fileID: 8970091096153805468}
   button: {fileID: 8970091096076384514}
+  hpImage: {fileID: 8970091096485440222}
 --- !u!1 &8970091097618617435
 GameObject:
   m_ObjectHideFlags: 0
