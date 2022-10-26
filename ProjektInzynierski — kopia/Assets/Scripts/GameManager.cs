@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         {
             //CreateCharacter
             p.player = Instantiate(playerPrefabs[p.characterId]);
-            p.hp = 5;
+            p.hp = 1;
 
             p.playerInfo = Instantiate(playerInfoPrefab,p.player.transform);
             Vector3 playerPos = p.player.transform.localPosition;
@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
         switch (turn)
         {
             case Turn.dice:
+                if (players[currentPlayerId].hp <= 0)
+                    SetTurn(Turn.nextTurn);
+
                 SetPlayersUI();
                 if (!players[currentPlayerId].isInPrison)
                 {
@@ -144,6 +147,8 @@ public class GameManager : MonoBehaviour
                 block.StepOn();
                 break;
             case Turn.nextTurn:
+                CheckWinPlayers();
+
                 int id = currentPlayerId;
                 id++;
 
@@ -160,6 +165,27 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
+    }
+
+    void CheckWinPlayers()
+    {
+        int playersWithNoHp=0;
+        Player winner = null;
+        foreach(Player p in players)
+        {
+            if (p.hp <= 0)
+                playersWithNoHp++;
+            else
+                winner = p;
+
+        }
+
+        if (playersWithNoHp + 1 == players.Count)
+        {
+            SetTurn(Turn.none);
+            Debug.Log($"Winner: {winner?.name}");
+        }
+
     }
 
     public int RollDice()
