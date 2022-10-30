@@ -68,6 +68,13 @@ public class Plot : Area
         
         if(plotDamage)
             plotDamage.text = damage.ToString();
+
+        if (type == AreaType.Chance)
+        {
+            blockRenderer.gameObject.SetActive(false);
+            plotDamage.gameObject.SetActive(false);
+        }
+
     }
 
 

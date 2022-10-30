@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (playersWithNoHp + 1 == players.Count)
+        if (playersWithNoHp + 1 == players.Count && players.Count > 1)
         {
             SetTurn(Turn.none);
             Debug.Log($"Winner: {winner?.name}");
