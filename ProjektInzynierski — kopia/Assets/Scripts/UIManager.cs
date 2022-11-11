@@ -59,12 +59,12 @@ public class UIManager : MonoBehaviour
 
     public void QuestionPlayer(Plot plot)
     {
-        Question question = questionHandler.GetRandomQuestionByCategory(plot.category);
+        Question question = questionHandler.GetRandomQuestionByCategory(plot.category.ToLower());
 
         Open(propertyUI);
         question.RandomSortAnswers();
 
-        categoryText.text = question.category;
+        categoryText.text = plot.areaName;
         questionText.text = question.question;
 
         AnswerButtons(true);
@@ -86,9 +86,9 @@ public class UIManager : MonoBehaviour
 
     public void LearnPlayer(Plot plot)
     {
-        Lesson lesson = questionHandler.GetRandomLessonByCategory(plot.category);
+        Lesson lesson = questionHandler.GetRandomLessonByCategory(plot.category.ToLower());
 
-        lCategoryText.text = lesson.category;
+        lCategoryText.text = plot.areaName;
         lLearnText.text = lesson.lesson;
 
         Open(learnUI);
@@ -107,7 +107,10 @@ public class UIManager : MonoBehaviour
 
 
         titleText.text = "Szansa";
-        descriptionText.text = "Wybierz dzia³ do którego chcesz sie przenieœæ.";
+        if(selectableAction==0)
+            descriptionText.text = "Mianuj swój dzia³ królow¹ nauk.";
+       else
+            descriptionText.text = "Wybierz dzia³ do którego chcesz sie przenieœæ.";
 
         if (areaList.Count == 0)
         {

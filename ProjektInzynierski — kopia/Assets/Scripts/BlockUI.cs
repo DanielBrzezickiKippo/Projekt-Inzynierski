@@ -67,13 +67,16 @@ public class BlockUI : MonoBehaviour
 
     void SetUI(string cat, string name, string amount,  Color color, bool isActive)
     {
-        categoryText.text = cat;
+        if (cat.Equals("algorytmy"))
+            categoryText.text = "nauka";
+        else
+            categoryText.text = "jêzyk";
         areaNameText.text = name;
         hpText.text = amount;
-        areaImage.color = color;
+        areaImage.color = color==new Color(0f,0f,0f,0f)?new Color(0f,0f,0f,1f):color;
 
-        categoryText.gameObject.SetActive(isActive);
-        areaNameText.gameObject.SetActive(isActive);
+        //categoryText.gameObject.SetActive(isActive);
+        //areaNameText.gameObject.SetActive(isActive);
         hpText.gameObject.SetActive(isActive);
     }
 

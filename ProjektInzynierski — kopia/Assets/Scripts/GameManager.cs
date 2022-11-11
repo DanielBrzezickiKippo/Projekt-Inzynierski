@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using inzynierka;
 
 [System.Serializable]
 public class Player
@@ -70,7 +71,8 @@ public class GameManager : MonoBehaviour
             p.properties = new List<Area>();
             data.Add(p);
         }
-        
+
+        Destroy(MenuSystem.instance.gameObject);
         return data;
     }
 
@@ -184,8 +186,15 @@ public class GameManager : MonoBehaviour
         {
             SetTurn(Turn.none);
             Debug.Log($"Winner: {winner?.name}");
+            StartCoroutine(uiManager.SendMessage($"Gracz {winner?.name} wygra³.",3f));
+            Invoke("LoadFirstScene",3f);
         }
 
+    }
+
+    void LoadFirstScene()
+    {
+        inzynierka.SceneManager.ResetScene();
     }
 
     public int RollDice()

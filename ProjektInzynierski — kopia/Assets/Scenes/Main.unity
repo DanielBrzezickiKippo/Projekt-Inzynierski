@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657958, g: 0.4964137, b: 0.5748193, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465791, g: 0.49641287, b: 0.5748184, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -382,7 +382,7 @@ MonoBehaviour:
     \u017Cy\u0107"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -627,7 +627,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66793180
 MonoBehaviour:
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 14
   m_fontSizeMax: 70
   m_fontStyle: 1
   m_HorizontalAlignment: 32
@@ -3057,7 +3057,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579903347
 MonoBehaviour:
@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 14
   m_fontSizeMax: 70
   m_fontStyle: 1
   m_HorizontalAlignment: 32
@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_text: Question Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3551,7 +3551,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739875661
 MonoBehaviour:
@@ -3604,7 +3604,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 14
   m_fontSizeMax: 70
   m_fontStyle: 1
   m_HorizontalAlignment: 32
@@ -3831,7 +3831,7 @@ MonoBehaviour:
   m_text: Tutaj jest tekst na nauke i ogolnie to zobaczymy co i jak :D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4442,7 +4442,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025227298
 MonoBehaviour:
@@ -4495,7 +4495,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 14
   m_fontSizeMax: 70
   m_fontStyle: 1
   m_HorizontalAlignment: 32
@@ -4600,15 +4600,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290493372
+  m_fontColor: {r: 0.735849, g: 0.73168385, b: 0.73168385, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4631,7 +4631,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -5710,8 +5710,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5741,7 +5741,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -6499,7 +6499,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6562,7 +6562,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1304499463
@@ -8474,15 +8474,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290493372
+  m_fontColor: {r: 0.735849, g: 0.73168385, b: 0.73168385, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8505,7 +8505,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -8538,7 +8538,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1750968014
@@ -8896,15 +8896,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290493372
+  m_fontColor: {r: 0.735849, g: 0.73168385, b: 0.73168385, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8927,7 +8927,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -9163,15 +9163,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Kr\xF3lowa nauk"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290493372
+  m_fontColor: {r: 0.735849, g: 0.73168385, b: 0.73168385, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9194,7 +9194,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -9227,7 +9227,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1980369387
@@ -9351,57 +9351,57 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 5
   - name: Python
-    category: 
+    category: python
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Python
-    category: 
+    category: python
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Python
-    category: 
+    category: python
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Algorytmy
-    category: 
+    category: algorytmy
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Javascript
-    category: 
+    category: javascript
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Javascript
-    category: 
+    category: javascript
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Javascript
-    category: 
+    category: javascript
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: "Wi\u0119zienie programist\xF3w"
-    category: 
+    category: wiezienie
     damage: 0
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 4
   - name: C++
-    category: 
+    category: c++
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: C++
-    category: 
+    category: c++
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: C++
-    category: 
+    category: c++
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9411,17 +9411,17 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 2
   - name: C
-    category: 
+    category: c
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Algorytmy
-    category: 
+    category: algorytmy
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: C
-    category: 
+    category: c
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9430,18 +9430,18 @@ MonoBehaviour:
     damage: 0
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 1
-  - name: Go
-    category: 
+  - name: R
+    category: rlang
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Algorytmy
-    category: 
+    category: algorytmy
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
-  - name: Go
-    category: 
+  - name: R
+    category: rlang
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9451,17 +9451,17 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 2
   - name: Java
-    category: 
+    category: java
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Java
-    category: 
+    category: java
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: Java
-    category: 
+    category: java
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9476,12 +9476,12 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: PHP
-    category: 
+    category: php
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: PHP
-    category: 
+    category: php
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9491,17 +9491,17 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 2
   - name: C#
-    category: 
+    category: c#
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: C#
-    category: 
+    category: c#
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
   - name: C#
-    category: 
+    category: c#
     damage: 1
     color: {r: 0, g: 0, b: 0, a: 0}
     type: 0
@@ -9555,26 +9555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd363859411deec41b76f7a7932717dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions:
-  - category: 
-    question: What is cpp?
-    answers:
-    - a
-    - b
-    - c
-    - d
-    correctAnswer: c
-  - category: 
-    question: O losie cto to jest
-    answers:
-    - d
-    - s
-    - w
-    - p
-    correctAnswer: p
-  lessons:
-  - category: 
-    lesson: Tralal lalalaall
+  questions: []
+  lessons: []
 --- !u!1 &2131313183
 GameObject:
   m_ObjectHideFlags: 0

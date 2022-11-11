@@ -13,5 +13,10 @@ namespace inzynierka
             int sceneId = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneId + 1);
         }
+
+        public static void ResetScene()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
     }
 }

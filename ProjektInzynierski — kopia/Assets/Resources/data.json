@@ -1,0 +1,655 @@
+{
+    "python":[
+        {
+            "category":"python",
+            "question":"Jaki będzie wynik działania następującego kodu?\nprint(\"Hello world!\")",
+            "answers":[
+                "\"Hello world\"",
+                "Syntax Error",
+                "Hello world!",
+                "print(Hello world!)"],
+            "correctAnswer":2
+        },
+        {
+            "category":"python",
+            "question":"Jaki będzie wynik działania następującego kodu?\nprint(3+4)",
+            "answers":[
+                "3+4",
+                "7",
+                "SyntaxError",
+                "print(3+4)"],
+            "correctAnswer":1
+        },
+        {
+            "category":"python",
+            "question":"Jaki będzie wynik działania następującego kodu?\nprint(\"3+4\")",
+            "answers":[
+                "3+4",
+                "7",
+                "34",
+                "SyntaxError"],
+            "correctAnswer":0
+        },
+        {
+            "category":"python",
+            "question":"Jaki będzie wynik działania następującego kodu?\nprint(2*\"Hello world!\")",
+            "answers":[
+                "TypeError",
+                "Hello World!Hello World!",
+                "Hello World! Hello World!",
+                "Hello Hello World! World!"],
+            "correctAnswer":3
+        }
+    ],
+    "cpp":[
+        {
+            "category":"c++",
+            "question":"Przykładem zmiennej typu int jest: ",
+            "answers":[
+                "50",
+                "50.5",
+                "0.55",
+                "pięć"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c++",
+            "question":"W jaki sposób możemy wprowadzić wartość do zmiennej a?",
+            "answers":[
+                "cin->a;",
+                "cin<<a;",
+                "cin>>a;",
+                "cout<<a;"],
+            "correctAnswer":2
+        },
+        {
+            "category":"c++",
+            "question":"Ile razy wykona się pętla przedstawiona poniżej?\nfor(int i=0;i<5;i++)",
+            "answers":[
+                "3",
+                "4",
+                "5",
+                "6"],
+            "correctAnswer":2
+        },
+        {
+            "category":"c++",
+            "question":"Główna funkcja main():",
+            "answers":[
+                "Dołącza bibliotekę",
+                "Wprowadza komunikat",
+                "Zapisuje wartości do pliku",
+                "Rozpoczyna działanie programu"],
+            "correctAnswer":3
+        },
+        {
+            "category":"c++",
+            "question":"Aby, wyświetlić napis, używamy polecenia: ",
+            "answers":[
+                "cout>>",
+                "print",
+                "include",
+                "return"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c++",
+            "question":"Aby przypisać wartość do zmiennej używamy operatora: ",
+            "answers":[
+                ">>",
+                "<<",
+                "=",
+                "=="],
+            "correctAnswer":2
+        }
+    ],
+    "c":[
+        {
+            "category":"c",
+            "question":"Jak określamy liczbę całkowitą?",
+            "answers":[
+                "int",
+                "float",
+                "char",
+                "unsigned int"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c",
+            "question":"Co oznacza\nchar c",
+            "answers":[
+                "Zmienna całkowita c",
+                "Zmienna zmiennoprzecinkowa c",
+                "Zmienna znakowa c",
+                "Zmienna rzeczywista c"],
+            "correctAnswer":2
+        },
+        {
+            "category":"c",
+            "question":"Jaka będzie wartość zmiennej b?\n a = 10;\nb = a * 15;",
+            "answers":[
+                "b = 150",
+                "b = 15",
+                "b = 10",
+                "Wystąpi błąd"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c",
+            "question":"Funkcja zwróci wartość:\nprintf(\"Wynik: %d\", 3+(2+4)*(7-1)/3-11);",
+            "answers":[
+                "Wynik: 4",
+                "Wynik: 12",
+                "Wynik: 3",
+                "Wynik: 18"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c",
+            "question":"Jakie wartości mają zmienne a i b?\na = 3 * (b = 5) + 4",
+            "answers":[
+                "a = 19, b = 5",
+                "a = 27, b = 9",
+                "a = 12, b = 5",
+                "a = 3, b = 9"],
+            "correctAnswer":0
+        },
+        {
+            "category":"c",
+            "question":"Co jest wynikiem operacji?\np3 = 3;\np3 *= 3;",
+            "answers":[
+                "p3 = 9",
+                "p3 = 3",
+                "p3 = 3p3",
+                "p3 = 27"],
+            "correctAnswer":0
+        }
+    ],
+    "csharp":[
+        {
+            "category":"c#",
+            "question":"Wskaż prawidłowy kod wpisujący wynik do TextBoxa",
+            "answers":[
+                "tbWynik = wynik.ToString();",
+                "tbWynik.Text = wynik.ToString();",
+                "tbWynik = 9",
+                "wynik = tbWynik;"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"c#",
+            "question":"Wskaż prawidłowy kod wpisujący wynik do TextBoxa",
+            "answers":[
+                "tbWynik = wynik.ToString();",
+                "tbWynik.Text = wynik.ToString();",
+                "tbWynik = 9",
+                "wynik = tbWynik;"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"c#",
+            "question":"Warunek\nif(a != 7){}\njest nieprawidłowy, gdy:",
+            "answers":[
+                "a = 3",
+                "a = 7",
+                "a = 0",
+                "a = 11"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"c#",
+            "question":"Ile razy wykona się dana pętla:\ndo\n{\nint a = 3;\n}\nwhile(true);",
+            "answers":[
+                "Jeden raz",
+                "Ani razu",
+                "Będzie się wykonywać bez końca",
+                "Do momentu, gdy a zmieni wartość"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"c#",
+            "question":"Jakie liczby zostaną wypisane:\nfor(int i = 0;i < 10;i += 2)\n{\n   Console.WriteLine(i);\n}",
+            "answers":[
+                "Parzyste od 0 do 8 włącznie",
+                "Parzyste od 0 do 10 włącznie",
+                "Wszystkie całkowite od 0 do 10",
+                "Wszystkie całkowite od 0 do 9"
+            ],
+            "correctAnswer":0
+        }
+    ],
+    "java":[
+        {
+            "category":"java",
+            "question":"Do czego służy słowo \"final\" w Javie?",
+            "answers":[
+                "Do zadeklarowania stałej",
+                "Do zadeklarowania zmiennej",
+                "Do zadeklarowania łańcucha znaków",
+                "Do uzyskania finalnej odpowiedzi"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"java",
+            "question":"Metody to inaczej?",
+            "answers":[
+                "Obiekty",
+                "Klasy",
+                "Funkcje",
+                "Zmienne"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"java",
+            "question":"Java orginalnie miała nazwę:",
+            "answers":[
+                "Coffee",
+                "Oak",
+                "Nowy C",
+                "Duke"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"java",
+            "question":"Wskaż niepoprawną linię kodu:",
+            "answers":[
+                "int count = 50.0;",
+                "int salary = 50_000;",
+                "int salary = 50;",
+                "Wszystkie są niepoprawne"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"java",
+            "question":"Ilu bitowa jest zmienna int?",
+            "answers":[
+                "8",
+                "16",
+                "32",
+                "64"
+            ],
+            "correctAnswer":2
+        }
+    ],
+    "javascript":[
+        {
+            "category":"javascript",
+            "question":"Instrukcja pozwalająca wyświetlać tekst:",
+            "answers":[
+                "write(\"tekst\");",
+                "print(\"tekst\");",
+                "document.write(\"tekst\");",
+                "console.writeLine(\"tekst\");"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"javascript",
+            "question":"Okno informacyjne w JS to:",
+            "answers":[
+                "alert(\"Uwaga awaria systemu\");",
+                "confirm(\"Uwaga awaria systemu\");",
+                "prompt(\"Uwaga awaria systemu\");",
+                "writeln(\"Uwaga awaria systemu\");"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"javascript",
+            "question":"Undefined określa wartość:",
+            "answers":[
+                "Pustą",
+                "Niezdefiniowaną",
+                "Obiektową",
+                "Logiczną"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"javascript",
+            "question":"Operator % zwraca:",
+            "answers":[
+                "Dzielenie",
+                "Dzielenie całkowite",
+                "Negację zmiennej",
+                "Resztę z dzielenia"
+            ],
+            "correctAnswer":3
+        },
+        {
+            "category":"javascript",
+            "question":"Co zwróci fragment kodu:\nvar k = parseInt(\"0x10\");\ndocument.write(\"wynik=\" + k);",
+            "answers":[
+                "8",
+                "10",
+                "16",
+                "NaN"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"javascript",
+            "question":"Aby skorzystać ze skryptu zapisanego w pliku przykład.js, należy połączyć go ze stroną za pomocą kodu:",
+            "answers":[
+                "<script>przykład.js</script>",
+                "<script src=\"przykład.js\"></script>",
+                "<script link=\"przykład.js\"></script>",
+                "<link rel=\"script\" href=\"przykład.js\">"
+            ],
+            "correctAnswer":1
+        }
+    ],
+    "php":[
+        {
+            "category":"php",
+            "question":"Aby umieścić kod w języku PHP należy użyć znaczników:",
+            "answers":[
+                "php.../>",
+                "<?php...?>",
+                "<php>...</php>",
+                "<?php>...<php?>"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"php",
+            "question":"Przetwarzaniem danych po stronie serwera zajmuje się:",
+            "answers":[
+                "Język PHP oraz interpreter PHP",
+                "Serwer Apache2",
+                "Serwer aplikacji Tomcat",
+                "DBMS"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"php",
+            "question":"Elementy środowiska XAMPP, to:",
+            "answers":[
+                "Cross - platform, Apache, MySQL, PHP, PERL",
+                "Cross - platform, Apache, Oracle Database, PHP, PERL",
+                "Cross - platform, Apache, PostgreSQL, PHP, PERL",
+                "Cross - platform, Apache, FireBird, PHP, PERL"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"php",
+            "question":"Technologie po stronie serwera:",
+            "answers":[
+                "PHP, JSP, CGI",
+                "ASP.Net, PHP, MVC",
+                "MVC, HTTP, CSS",
+                "PHP, CGI, MVC, ASP.Net"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"php",
+            "question":"Za pomocą języka PHP nie jest możliwe:",
+            "answers":[
+                "Zmienianie dynamiczne zawartości strony HTML w przeglądarce",
+                "Generowanie dynamicznej zawartości strony",
+                "Przetwarzanie danych formularzy",
+                "Przetwarzanie danych zgromadzonych w bazie danych"
+            ],
+            "correctAnswer":0
+        }
+    ],
+    "r":[
+        {
+            "category":"rlang",
+            "question":"Znak & oznacza:",
+            "answers":[
+                "i - wszystkie warunki jednocześnie muszą być prawdziwe, aby uzykać TRUE",
+                "i - conajmniej dwa warunki jednocześnie muszą być prawdziwe, aby uzyskać TRUE",
+                "lub - conajmniej jeden warunek musi być prawdziwy, aby uzyskać TRUE",
+                "lub - conajmniej dwa warunki jednocześnie muszą być prawdziwe, aby uzyskać TRUE"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"rlang",
+            "question":"Aby stworzyć wektor w języku R, należy:",
+            "answers":[
+            "Użyć komendy vector()",
+            "Użyć komendy c()",
+            "Nie istnieje coś takiego jak wektor",
+            "Wypisać po kolei elementy wektora i wcisnąć enter"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"rlang",
+            "question":"Wynikiem działania c(1,4,3,6)*2 będzie:",
+            "answers":[
+            "144",
+            "Nie da się wykonać takiego działania",
+            "1 16 9 36",
+            "2 8 6 12"
+            ],
+            "correctAnswer":3
+        },
+        {
+            "category":"rlang",
+            "question":"Chcąc sprawdzić, czy choć jedno z kilku twierdzeń (np. 2>1) jest prawdziwe, należy:",
+            "answers":[
+            "Użyć znaku |",
+            "Użyć znaku &",
+            "Użyć komendy check",
+            "Wypisać twierdzenia oddzielone od siebie przecinkami"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"rlang",
+            "question":"Czy R zachowuje kolejność działań?",
+            "answers":[
+                "Nie, tylko w skrajnych przypadkach",
+                "Tak",
+                "Tak, ale tylko przy nieskomplikowanych działaniach",
+                "Nie"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"rlang",
+            "question":"Dlaczego komenda c(\"2\")*2 nie zadziała?",
+            "answers":[
+                "Ponieważ próbujemy przemnożyć argument niebędący liczbą",
+                "Komenda zadziala, a wynikiem będzie 4",
+                "Ponieważ zamiast znaku \" należy użyć znaku '",
+                "Ponieważ liczba 2 również powinna zostać ujęta w cudzysłów"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"rlang",
+            "question":"Jakim rodzajem wektora jest c(T,FALSE,F)?",
+            "answers":[
+                "Znakowym",
+                "Logicznym",
+                "Liczbowym",
+                "Operatorowe"
+            ],
+            "correctAnswer":1
+        }
+    ],
+    "algorytmy":[
+        {
+            "category":"algorytmy",
+            "question":"Co to algorytm?",
+            "answers":[
+                "Uporządkowany i uściślony sposób rozwiązania danego problemu, zawierający szczegółowy opis wykonywanych czynności",
+                "Nieuporządkowany sposób rozwiązania danego problemu",
+                "Lista kroków potrzebna do rozwiązania danego problemu, zapisania w dowolnej kolejności",
+                "Nieskończony ciąg czynności koniecznych do rozwiązania problemu"
+                ],
+            "correctAnswer":0
+        },
+        {
+            "category":"algorytmy",
+            "question":"Jak nazywamy kolejność punktów, która nie może być przypadkowa",
+            "answers":[
+                "Schemat blokowy",
+                "Przepis",
+                "Lista kroków",
+                "Segmentacja"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"algorytmy",
+            "question":"W schemacie blokowym poszczególne operacje przedstawia się za pomocą odpowiednio połączonych:",
+            "answers":[
+                "Kroków",
+                "Bloków",
+                "Instrukcji",
+                "Kropek"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"algorytmy",
+            "question":"Prawidłowy sposób zapisywania algorytmów to:",
+            "answers":[
+                "Przepis",
+                "Lista kroków",
+                "Schemat klockowy",
+                "Segmentacja"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"algorytmy",
+            "question":"Dany jest następujący algorytm:\nPodaj dwie liczby A i B\nZnajdź ich sumę\nPodziel otrzymaną sumę przez dwa.\nOtrzymany wynik to:",
+            "answers":[
+                "Suma liczb A i B",
+                "Średniej liczb A i B",
+                "Różnich liczb A i B",
+                "Modulo liczb A i B"
+            ],
+            "correctAnswer":1
+        }
+    ],
+    "wiezienie":[
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nname = \"Jerzy\";\nnewname = \"killer\";\nname = newname;\nprint(name);",
+            "answers":[
+                "Jerzy",
+                "kiler",
+                "killer",
+                "Jerzy killer"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nname = \"Koder\";\nname = \"programmer\";\nprint(name);",
+            "answers":[
+                "programmer",
+                "Koder",
+                "Żadna odpowiedź",
+                "Error"
+            ],
+            "correctAnswer":0
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nname = \"Koder\";\nprint(f\"Hello {name}\");",
+            "answers":[
+                "Hello {name}",
+                "Hello name",
+                "Hello Koder",
+                "Error"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nfor i in range(10):\n    print(i);",
+            "answers":[
+                "012345678910",
+                "0123456789",
+                "12345678910",
+                "123456789"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nfor i in range(0):\n    print(i);",
+            "answers":[
+                "0",
+                "inf",
+                "-1",
+                "Nic"
+            ],
+            "correctAnswer":3
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nfor k in range(0):\nprint(k);",
+            "answers":[
+                "0",
+                "-1",
+                "Error",
+                "Nic"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nfor k in range(0):\nprint(k);",
+            "answers":[
+                "0",
+                "-1",
+                "Error",
+                "Nic"
+            ],
+            "correctAnswer":2
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nfor k in range(2, 10):\n    print(i);",
+            "answers":[
+                "0 1 10",
+                "2 3 4 5 6 7 8 9",
+                "2 4 6 8 10",
+                "2 4 6 8"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nsum = 1 + 1 - 2\nprint(sum)",
+            "answers":[
+                "-1",
+                "0",
+                "Error",
+                "2"
+            ],
+            "correctAnswer":1
+        },
+        {
+            "category":"wiezienie",
+            "question":"Jaki będzie wynik podanego kodu:<align=\"left\">\n\nresult = 10 +1 -1\nprint(result)",
+            "answers":[
+                "12",
+                "10",
+                "9",
+                "11"
+            ],
+            "correctAnswer":1
+        }
+    ]
+}
