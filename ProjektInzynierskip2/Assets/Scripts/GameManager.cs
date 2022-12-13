@@ -118,9 +118,6 @@ public class GameManager : MonoBehaviour
         cameraFollow.SetTarget(players[currentPlayerId].player.transform);
     }
 
-    int index = 0;
-    int[] rolls = { 1, 8, 20, 5, 8, 20, 5, 8, 20,1 };
-
     void HandleTurn()
     {
         switch (turn)
@@ -137,12 +134,7 @@ public class GameManager : MonoBehaviour
                     uiManager.rollButton.onClick.RemoveAllListeners();
                     uiManager.rollButton.onClick.AddListener(() =>
                     {
-
-                        //move = RollDice();//to test
-                        move = rolls[index];
-                        index++;
-                        if (index >= rolls.Length)
-                            index = 0;
+                        move = RollDice();
                         uiManager.RollButton(false, move);
                         SetTurn(Turn.move);
                     });
