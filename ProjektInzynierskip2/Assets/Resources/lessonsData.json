@@ -1,0 +1,60 @@
+{
+    "python":[
+        {
+            "category":"python",
+            "lesson":"Jaki będzie wynik działania następującego kodu?\nprint(\"Hello world!\")"
+        }
+    ],
+    "cpp":[
+        {
+            "category":"c++",
+            "lesson":"Zmienna - to obiekt w programowaniu, który przechowuje różnego rodzaju dane niezbędne do działania programu. Zmienna podczas działania programu może zmieniać swoje wartości (jak wskazuje nazwa). Tworząc zmienną musimy nadać jej nazwę oraz typ, który określa co nasza zmienna będzie przechowywać. Nadając nazwę trzymamy się następujących reguł:<align=\"left\">\n\n   - zmienna jest jednym ciągiem znaków bez spacji np. nazwa_zmiennej - dobrze, nazwa zmiennej - źle\n   - nie zaczynamy nazwy od cyfry np. 12zmienna - źle, zmienna12 - dobrze\n   - nie używamy polskich liter takich jak ą, ę itp.\n   - nazwa zmiennej powinna kojarzyć się z przeznaczeniem tej zmiennej np. tablica_ciagu - dobrze\n   - nazwa nie może być słowem kluczowym języka programowania np. auto - źle"
+        },
+        {
+            "category":"c++",
+            "lesson":"Typy zmiennych:\n(Zmienna - bajt)\n\n<align=\"left\">Typy całkowite:\nshort - 2\nint - 4\nlong - 4\nlong long - 8\nunsigned short - 2\nunsigned int - 4\nunsigned long - 4\nunsigned long long - 8\n\nTypy rzeczywiste:\nfloat - 4\ndouble - 8\nlong double - 12\n\nTyp znakowy:\nchar - 1\nunsigned char - 1\n\nTyp logiczny:\nbool - 1"
+        }
+    ],
+    "c":[
+        {
+            "category":"c",
+            "lesson":""
+        }
+    ],
+    "csharp":[
+        {
+            "category":"c#",
+            "lesson":"Wskaż prawidłowy kod wpisujący wynik do TextBoxa"
+        }
+    ],
+    "java":[
+        {
+            "category":"java",
+            "lesson":"Do czego służy słowo \"final\" w Javie?"
+        }
+    ],
+    "javascript":[
+        {
+            "category":"javascript",
+            "lesson":"Instrukcja pozwalająca wyświetlać tekst:"
+        }
+    ],
+    "php":[
+        {
+            "category":"php",
+            "lesson":"Aby umieścić kod w języku PHP należy użyć znaczników:"
+        }
+    ],
+    "r":[
+        {
+            "category":"rlang",
+            "lesson":"Znak & oznacza:"
+        }
+    ],
+    "algorytmy":[
+        {
+            "category":"algorytmy",
+            "lesson":"Co to algorytm?"
+        }
+    ]
+}
