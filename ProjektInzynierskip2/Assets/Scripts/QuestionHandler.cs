@@ -199,7 +199,7 @@ public class QuestionHandler : MonoBehaviour
         List<Question> questionsByCategory = new List<Question>();
         foreach (Question question in questions)
         {
-            if (question.category == category&&question.difficulty==difficulty)
+            if (question.category == category&&question.difficulty<=difficulty)
                 questionsByCategory.Add(question);
         }
 
